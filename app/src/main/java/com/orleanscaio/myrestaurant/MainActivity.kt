@@ -28,10 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         dishes = DishesXmlParser().parseDishes(R.xml.dishes, this);
 
-        val recyclerView:RecyclerView = findViewById(R.id.recycler_view_dishes)
-        val adapterDishMenu = AdapterDishMenu(this, dishes)
-        recyclerView.adapter = adapterDishMenu
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        populateRecyclerViewMenuDishes(this, dishes)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -64,5 +61,12 @@ class MainActivity : AppCompatActivity() {
         val arrayAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item, foodCategories)
 
         foodCategorySpinner.adapter = arrayAdapter
+    }
+
+    private fun populateRecyclerViewMenuDishes(context: Context, dishes: ArrayList<Dish>){
+        val recyclerView:RecyclerView = findViewById(R.id.recycler_view_dishes)
+        val adapterDishMenu = AdapterDishMenu(context, dishes)
+        recyclerView.adapter = adapterDishMenu
+        recyclerView.layoutManager = LinearLayoutManager(context)
     }
 }
