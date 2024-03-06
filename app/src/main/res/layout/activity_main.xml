@@ -13,13 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="18dp"
-        android:elevation="8dp">
+        android:elevation="8dp"
+        android:layout_marginBottom="32dp">
         <Spinner
             android:id="@+id/food_category_spinner"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             />
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_dishes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

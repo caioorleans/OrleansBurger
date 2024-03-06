@@ -4,27 +4,34 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View.OnCreateContextMenuListener
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.orleanscaio.myrestaurant.databinding.ActivityMainBinding
+import com.orleanscaio.myrestaurant.dish.Dish
 import com.orleanscaio.myrestaurant.dish.DishesXmlParser
+import com.orleanscaio.myrestaurant.recyclerviewadapters.AdapterDishMenu
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var dishes: ArrayList<Dish>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         createSpinner(this);
-        val dishes = DishesXmlParser().parseDishes(R.xml.dishes, this);
+
+        dishes = DishesXmlParser().parseDishes(R.xml.dishes, this);
+
+        val recyclerView:RecyclerView = findViewById(R.id.recycler_view_dishes)
+        val adapterDishMenu = AdapterDishMenu(this, dishes)
+        recyclerView.adapter = adapterDishMenu
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
