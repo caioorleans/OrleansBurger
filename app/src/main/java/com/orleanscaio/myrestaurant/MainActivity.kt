@@ -1,17 +1,20 @@
 package com.orleanscaio.myrestaurant
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.orleanscaio.myrestaurant.databinding.ActivityMainBinding
 import com.orleanscaio.myrestaurant.dish.Dish
 import com.orleanscaio.myrestaurant.dish.DishesXmlParser
@@ -31,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         dishes = DishesXmlParser().parseDishes(R.xml.dishes, this);
 
         depoisnomeioerraporra(this, dishes, spinner)
+
+        //val imageView:ImageView = findViewById(R.id.imageView)
+
+        //val imageStream = assets.open("batatinhas.jpg").readBytes()
+        //Glide.with(this).load(imageStream).into(imageView)
 
         //populateRecyclerViewMenuDishes(this, dishes)
     }

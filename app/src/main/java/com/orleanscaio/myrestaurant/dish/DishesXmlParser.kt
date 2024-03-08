@@ -18,6 +18,7 @@ class DishesXmlParser {
             var ingredients = ""
             var timeToPrepare = 0
             var cost = 0f
+            var imageUri = ""
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 when (eventType) {
@@ -47,11 +48,15 @@ class DishesXmlParser {
                                 parser.next()
                                 cost = parser.text.toFloat()
                             }
+                            "image_uri" -> {
+                                parser.next()
+                                imageUri = parser.text
+                            }
                         }
                     }
                     XmlPullParser.END_TAG -> {
                         if (parser.name == "dish") {
-                            val dish = Dish(dishId, category, name, ingredients, timeToPrepare, cost)
+                            val dish = Dish(dishId, category, name, ingredients, timeToPrepare, cost, imageUri)
                             dishes.add(dish)
                         }
                     }

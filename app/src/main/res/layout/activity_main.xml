@@ -28,9 +28,9 @@
         android:id="@+id/recycler_view_dishes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="48dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        android:paddingTop="48dp" />
 
 </LinearLayout>

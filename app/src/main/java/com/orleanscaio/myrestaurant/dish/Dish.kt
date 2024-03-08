@@ -6,5 +6,6 @@ data class Dish (
     val name: String,
     val ingredients: String,
     val timeToPrepare: Int,
-    val cost: Float
+    val cost: Float,
+    val imageUri:String
 )

@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.orleanscaio.myrestaurant.R
 import com.orleanscaio.myrestaurant.dish.Dish
+import java.io.IOException
 
 class AdapterDishMenu(context:Context, dishes:ArrayList<Dish>): RecyclerView.Adapter<AdapterDishMenu.MyViewHolder>() {
 
@@ -45,6 +47,16 @@ class AdapterDishMenu(context:Context, dishes:ArrayList<Dish>): RecyclerView.Ada
             append(minutes)
             append(" m")
         }
+
+        try {
+            val image= context.assets.open(dishes[position].imageUri).readBytes()
+            Glide.with(context).load(image)
+                .placeholder(R.drawable.baseline_restaurant_menu_24).centerCrop().into(holder.imageView)
+        }catch (exception:IOException){
+            Glide.with(context).load(R.drawable.baseline_sentiment_very_dissatisfied_24)
+                .centerCrop().into(holder.imageView)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -53,10 +65,10 @@ class AdapterDishMenu(context:Context, dishes:ArrayList<Dish>): RecyclerView.Ada
     }
 
     public class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        lateinit var imageView: ImageView
-        lateinit var nameTextView: TextView
-        lateinit var priceTextView: TextView
-        lateinit var preparationTimeTextView: TextView
+        var imageView: ImageView
+        var nameTextView: TextView
+        var priceTextView: TextView
+        var preparationTimeTextView: TextView
         init {
             imageView = itemView.findViewById(R.id.dish_image)
             nameTextView = itemView.findViewById(R.id.dish_name)
