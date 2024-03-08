@@ -6,9 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="32dp"
-    android:paddingStart="32dp"
-    android:paddingEnd="32dp"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -16,6 +13,9 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="18dp"
         android:elevation="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="-24dp">
         <Spinner
             android:id="@+id/food_category_spinner"
@@ -29,7 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:clipToPadding="false" />
-
 
 </LinearLayout>
