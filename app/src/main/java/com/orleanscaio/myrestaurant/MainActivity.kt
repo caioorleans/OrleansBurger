@@ -1,23 +1,17 @@
 package com.orleanscaio.myrestaurant
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.orleanscaio.myrestaurant.databinding.ActivityWelcomeBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.orleanscaio.myrestaurant.databinding.ActivityMainBinding
 import com.orleanscaio.myrestaurant.dish.Dish
 import com.orleanscaio.myrestaurant.dish.DishesXmlParser
