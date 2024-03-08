@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- dishes.xml -->
+<dishes>
+    <dish>
+        <id>1</id>
+        <category>Appetizer</category>
+        <name>Batata Frita</name>
+        <ingredients>500g de tiras de batata fritas em óleo de soja e 1g de sal.</ingredients>
+        <time_to_prepare>8</time_to_prepare>
+        <cost>5</cost>
+        <image_uri>batatinhas.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>2</id>
+        <category>Appetizer</category>
+        <name>Coxinha</name>
+        <ingredients>Coxinha feita com massa de farinha de trigo e recheada com frango e cebola frita.</ingredients>
+        <time_to_prepare>10</time_to_prepare>
+        <cost>8</cost>
+        <image_uri>coxinhas.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>3</id>
+        <category>Appetizer</category>
+        <name>Anéis de Cebola</name>
+        <ingredients>500g de anéis de cebola crocantes fritos em óleo de soja.</ingredients>
+        <time_to_prepare>8</time_to_prepare>
+        <cost>5</cost>
+        <image_uri>aneiscebola.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>4</id>
+        <category>Appetizer</category>
+        <name>Dadinhos de Tapioca</name>
+        <ingredients>500g de dadinhos deliciosos de tapioca, recheados com amor e carinho.</ingredients>
+        <time_to_prepare>8</time_to_prepare>
+        <cost>5</cost>
+        <image_uri>dadotapioca.jpeg</image_uri>
+    </dish>
+    <dish>
+        <id>5</id>
+        <category>Main Course</category>
+        <name>Pizza de Calabresa</name>
+        <ingredients>Pizza recheada com molho de tomate, queijo mussarela, calabresa, cebola e azeitona.</ingredients>
+        <time_to_prepare>28</time_to_prepare>
+        <cost>31.50</cost>
+        <image_uri>pizzacalabresa.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>6</id>
+        <category>Main Course</category>
+        <name>Pizza Portuguesa</name>
+        <ingredients>Pizza recheada com molho de tomate, queijo mussarela, bacon, ovo, cebola, milho e azeitona.</ingredients>
+        <time_to_prepare>30</time_to_prepare>
+        <cost>34.50</cost>
+        <image_uri>pizzaportuguesa.jpeg</image_uri>
+    </dish>
+    <dish>
+        <id>7</id>
+        <category>Main Course</category>
+        <name>Pizza Quatro Queijos</name>
+        <ingredients>Pizza recheada com molho de tomate, provolone, mussarela, parmesão e gorgonzola.</ingredients>
+        <time_to_prepare>28</time_to_prepare>
+        <cost>34.50</cost>
+        <image_uri>pizza4queijos.png</image_uri>
+    </dish>
+    <dish>
+        <id>8</id>
+        <category>Main Course</category>
+        <name>Pizza Frango Catupity</name>
+        <ingredients>Pizza recheada com molho de tomate, mussarela, frango desfiado, catupiry, cebola e azeitona.</ingredients>
+        <time_to_prepare>32</time_to_prepare>
+        <cost>34.50</cost>
+        <image_uri>pizza-de-frango-com-catupiry.png</image_uri>
+    </dish>
+</dishes>
