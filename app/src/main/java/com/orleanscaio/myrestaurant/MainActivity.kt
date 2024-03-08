@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -24,11 +26,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        createSpinner(this);
+        val spinner = createSpinner(this);
 
         dishes = DishesXmlParser().parseDishes(R.xml.dishes, this);
 
-        populateRecyclerViewMenuDishes(this, dishes)
+        depoisnomeioerraporra(this, dishes, spinner)
+
+        //populateRecyclerViewMenuDishes(this, dishes)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -48,19 +52,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createSpinner(context:Context){
+    private fun createSpinner(context:Context):Spinner{
         val foodCategorySpinner = findViewById<Spinner>(R.id.food_category_spinner)
 
         val foodCategories = arrayOf(
             getString(R.string.appetizer),
             getString(R.string.main_course),
             getString(R.string.dessert),
-            getString(R.string.drinks)
+            getString(R.string.drinks),
+            getString(R.string.all_meals)
         )
 
         val arrayAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item, foodCategories)
 
         foodCategorySpinner.adapter = arrayAdapter
+
+        return foodCategorySpinner
     }
 
     private fun populateRecyclerViewMenuDishes(context: Context, dishes: ArrayList<Dish>){
@@ -68,5 +75,48 @@ class MainActivity : AppCompatActivity() {
         val adapterDishMenu = AdapterDishMenu(context, dishes)
         recyclerView.adapter = adapterDishMenu
         recyclerView.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun depoisnomeioerraporra(context: Context, meals: ArrayList<Dish>, spinner:Spinner){
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                var foodFiltered: ArrayList<Dish> = ArrayList()
+                when(position){
+                    0 -> {
+                        for (meal in meals){
+                            if (meal.category == "Appetizer") foodFiltered.add(meal)
+                        }
+                    }
+                    1 -> {
+                        for (meal in meals){
+                            if (meal.category == "Main Course") foodFiltered.add(meal)
+                        }
+                    }
+                    2 -> {
+                        for (meal in meals){
+                            if (meal.category == "Dessert") foodFiltered.add(meal)
+                        }
+                    }
+                    3 -> {
+                        for (meal in meals){
+                            if (meal.category == "Drinks") foodFiltered.add(meal)
+                        }
+                    }
+                    else -> {
+                        foodFiltered = meals;
+                    }
+                }
+                populateRecyclerViewMenuDishes(context,foodFiltered)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
     }
 }

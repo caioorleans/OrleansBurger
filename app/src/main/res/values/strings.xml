@@ -5,4 +5,5 @@
     <string name="main_course">Prato Principal</string>
     <string name="dessert">Sobremesa</string>
     <string name="drinks">Bebidas</string>
+    <string name="all_meals">Cardápio Completo</string>
 </resources>
