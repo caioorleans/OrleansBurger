@@ -1,6 +1,7 @@
 package com.orleanscaio.myrestaurant
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,8 +17,9 @@ import com.orleanscaio.myrestaurant.databinding.ActivityMainBinding
 import com.orleanscaio.myrestaurant.dish.Dish
 import com.orleanscaio.myrestaurant.dish.DishesXmlParser
 import com.orleanscaio.myrestaurant.recyclerviewadapters.AdapterDishMenu
+import com.orleanscaio.myrestaurant.recyclerviewadapters.RecyclerViewAdapterInterface
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), RecyclerViewAdapterInterface {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var dishes: ArrayList<Dish>
@@ -30,14 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         dishes = DishesXmlParser().parseDishes(R.xml.dishes, this);
 
-        depoisnomeioerraporra(this, dishes, spinner)
-
-        //val imageView:ImageView = findViewById(R.id.imageView)
-
-        //val imageStream = assets.open("batatinhas.jpg").readBytes()
-        //Glide.with(this).load(imageStream).into(imageView)
-
-        //populateRecyclerViewMenuDishes(this, dishes)
+        selectDishCategory(dishes, spinner)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -55,6 +50,11 @@ class MainActivity : AppCompatActivity() {
                 return super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    override fun onItemClick(dish: Dish) {
+        Toast.makeText(this, dish.name, Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this,DishDetailsActivity::class.java))
     }
 
     private fun createSpinner(context:Context):Spinner{
@@ -75,14 +75,14 @@ class MainActivity : AppCompatActivity() {
         return foodCategorySpinner
     }
 
-    private fun populateRecyclerViewMenuDishes(context: Context, dishes: ArrayList<Dish>){
+    private fun populateRecyclerViewMenuDishes(dishes: ArrayList<Dish>){
         val recyclerView:RecyclerView = findViewById(R.id.recycler_view_dishes)
-        val adapterDishMenu = AdapterDishMenu(context, dishes)
+        val adapterDishMenu = AdapterDishMenu(this, dishes, this)
         recyclerView.adapter = adapterDishMenu
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun depoisnomeioerraporra(context: Context, meals: ArrayList<Dish>, spinner:Spinner){
+    private fun selectDishCategory(dishes: ArrayList<Dish>, spinner:Spinner){
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -93,30 +93,30 @@ class MainActivity : AppCompatActivity() {
                 var foodFiltered: ArrayList<Dish> = ArrayList()
                 when(position){
                     0 -> {
-                        for (meal in meals){
-                            if (meal.category == "Appetizer") foodFiltered.add(meal)
+                        for (dish in dishes){
+                            if (dish.category == "Appetizer") foodFiltered.add(dish)
                         }
                     }
                     1 -> {
-                        for (meal in meals){
-                            if (meal.category == "Main Course") foodFiltered.add(meal)
+                        for (dish in dishes){
+                            if (dish.category == "Main Course") foodFiltered.add(dish)
                         }
                     }
                     2 -> {
-                        for (meal in meals){
-                            if (meal.category == "Dessert") foodFiltered.add(meal)
+                        for (dish in dishes){
+                            if (dish.category == "Dessert") foodFiltered.add(dish)
                         }
                     }
                     3 -> {
-                        for (meal in meals){
-                            if (meal.category == "Drinks") foodFiltered.add(meal)
+                        for (dish in dishes){
+                            if (dish.category == "Drinks") foodFiltered.add(dish)
                         }
                     }
                     else -> {
-                        foodFiltered = meals;
+                        foodFiltered = dishes;
                     }
                 }
-                populateRecyclerViewMenuDishes(context,foodFiltered)
+                populateRecyclerViewMenuDishes(foodFiltered)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

@@ -12,26 +12,32 @@ import com.orleanscaio.myrestaurant.R
 import com.orleanscaio.myrestaurant.dish.Dish
 import java.io.IOException
 
-class AdapterDishMenu(context:Context, dishes:ArrayList<Dish>): RecyclerView.Adapter<AdapterDishMenu.MyViewHolder>() {
+class AdapterDishMenu(context:Context,
+                      dishes:ArrayList<Dish>,
+                      recyclerInterface: RecyclerViewAdapterInterface)
+    : RecyclerView.Adapter<AdapterDishMenu.MyViewHolder>() {
+
+    private var recyclerViewInterface: RecyclerViewAdapterInterface
 
     private var context: Context
     private var dishes: ArrayList<Dish>
     init {
         this.context = context
         this.dishes = dishes
+        this.recyclerViewInterface = recyclerInterface
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AdapterDishMenu.MyViewHolder {
+    ): MyViewHolder {
         //This is where the layout is inflated (givin a look to our rows)
         val inflater: LayoutInflater = LayoutInflater.from(context)
         val view:View = inflater.inflate(R.layout.card_dish_menu, parent, false)
 
-        return AdapterDishMenu.MyViewHolder(view)
+        return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: AdapterDishMenu.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         //assign values to the views created
         holder.nameTextView.text = dishes[position].name
         holder.priceTextView.text = buildString {
@@ -55,6 +61,11 @@ class AdapterDishMenu(context:Context, dishes:ArrayList<Dish>): RecyclerView.Ada
         }catch (exception:IOException){
             Glide.with(context).load(R.drawable.baseline_sentiment_very_dissatisfied_24)
                 .centerCrop().into(holder.imageView)
+        }
+
+        holder.itemView.setOnClickListener {
+            if (holder.adapterPosition != RecyclerView.NO_POSITION)
+                recyclerViewInterface.onItemClick(dishes[position])
         }
 
     }
