@@ -53,8 +53,9 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapterInterface {
     }
 
     override fun onItemClick(dish: Dish) {
-        Toast.makeText(this, dish.name, Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this,DishDetailsActivity::class.java))
+        val intent = Intent(this,DishDetailsActivity::class.java)
+        intent.putExtra("dish", dish)
+        startActivity(intent)
     }
 
     private fun createSpinner(context:Context):Spinner{

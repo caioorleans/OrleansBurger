@@ -6,4 +6,7 @@
     <string name="dessert">Sobremesa</string>
     <string name="drinks">Bebidas</string>
     <string name="all_meals">Cardápio Completo</string>
+    <string name="time_to_prepare">Tempo de preparo:</string>
+    <string name="minutes">%1$s minutos</string>
+    <string name="currency">R$ %1$s</string>
 </resources>
