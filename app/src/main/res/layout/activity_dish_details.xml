@@ -10,29 +10,35 @@
     <ImageView
         android:id="@+id/dish_details_dish_image"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="275dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_restaurant_menu_24" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="800dp"
+        android:layout_height="0dp"
         android:layout_marginTop="-40dp"
         app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dish_details_dish_image">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="32dp">
+            android:layout_height="match_parent"
+            android:paddingTop="32dp">
 
             <TextView
                 android:id="@+id/dish_details_dish_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
                 android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +48,9 @@
                 android:id="@+id/dish_details_dish_ingredients"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="32dp"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -54,8 +62,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
                 android:text="@string/time_to_prepare"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/dish_details_dish_ingredients"
                 app:layout_constraintTop_toBottomOf="@+id/dish_details_dish_ingredients" />
 
@@ -63,21 +71,121 @@
                 android:id="@+id/dish_details_time_to_prepare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="2dp"
+                android:layout_marginTop="10dp"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/dish_details_time_to_prepare_label"
                 app:layout_constraintTop_toBottomOf="@+id/dish_details_dish_ingredients" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dish_details_observations_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/ice_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dish_details_decrease">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <EditText
+                        android:id="@+id/dish_Details_dish_observations"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:autofillHints="false"
+                        android:gravity="top|start"
+                        android:hint="@string/hint_your_observations_here"
+                        android:inputType="text|textMultiLine" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
 
             <TextView
                 android:id="@+id/dish_details_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textSize="28sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="112dp"
                 android:text=""
+                android:textSize="28sp"
                 app:layout_constraintStart_toStartOf="@+id/dish_details_time_to_prepare_label"
-                app:layout_constraintTop_toBottomOf="@+id/dish_details_time_to_prepare" />
+                app:layout_constraintTop_toBottomOf="@+id/dish_details_observations_card" />
+
+            <Button
+                android:id="@+id/dish_details_increase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/increase"
+                app:layout_constraintEnd_toEndOf="@+id/dish_details_dish_ingredients"
+                app:layout_constraintTop_toTopOf="@+id/dish_details_decrease" />
+
+            <Button
+                android:id="@+id/dish_details_decrease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/decrease"
+                app:layout_constraintStart_toStartOf="@+id/dish_details_time_to_prepare_label"
+                app:layout_constraintTop_toBottomOf="@+id/dish_details_time_to_prepare_label" />
+
+            <TextView
+                android:id="@+id/dish_details_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/dish_details_decrease"
+                app:layout_constraintEnd_toStartOf="@+id/dish_details_increase"
+                app:layout_constraintStart_toEndOf="@+id/dish_details_decrease"
+                app:layout_constraintTop_toTopOf="@+id/dish_details_decrease" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="@color/ice_white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/dish_details_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/dish_details_add_to_cart"
+                app:layout_constraintEnd_toStartOf="@+id/dish_details_add_to_cart"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dish_details_add_to_cart" />
+
+            <Button
+                android:id="@+id/dish_details_add_to_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_cart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/dish_details_total"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

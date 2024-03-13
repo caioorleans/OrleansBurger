@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyRestaurant</string>
+    <string name="app_name">Experiência Gourmet</string>
     <string name="menu_cart">Carrinho</string>
     <string name="appetizer">Entrada</string>
     <string name="main_course">Prato Principal</string>
@@ -9,4 +9,9 @@
     <string name="time_to_prepare">Tempo de preparo:</string>
     <string name="minutes">%1$s minutos</string>
     <string name="currency">R$ %1$s</string>
+    <string name="hint_your_observations_here">Insira suas observações aqui</string>
+    <string name="increase">+</string>
+    <string name="decrease">-</string>
+    <string name="add_to_cart">Adicionar ao carrinho</string>
+    <string name="dish_details_total">%1$s x R$ %2$s = R$ %3$s</string>
 </resources>

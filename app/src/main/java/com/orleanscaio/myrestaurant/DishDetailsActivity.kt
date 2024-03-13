@@ -15,12 +15,14 @@ import java.io.IOException
 class DishDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDishDetailsBinding
+    private lateinit var dish:Dish
+    private var dishQuantity = 1;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDishDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dish = intent.getSerializableExtra("dish") as Dish
+        dish = intent.getSerializableExtra("dish") as Dish
         bindActivityElements(dish)
     }
 
@@ -46,5 +48,46 @@ class DishDetailsActivity : AppCompatActivity() {
             else
                 ContextCompat.getColor(this,R.color.green)
         )
+
+        if(dishQuantity <= 1)
+            binding.dishDetailsDecrease.isEnabled = false
+        binding.dishDetailsQuantity.text = dishQuantity.toString();
+
+        binding.dishDetailsIncrease.setOnClickListener { increase() }
+        binding.dishDetailsDecrease.setOnClickListener { decrease() }
+
+        updateTotal()
+
+        binding.dishDetailsAddToCart.setOnClickListener { addToCart() }
+    }
+
+    private fun increase(){
+        dishQuantity++
+        binding.dishDetailsQuantity.text = dishQuantity.toString();
+        updateTotal()
+        if(dishQuantity > 1)
+            binding.dishDetailsDecrease.isEnabled = true
+    }
+
+    private fun decrease(){
+        if(dishQuantity >1){
+            dishQuantity--
+            binding.dishDetailsQuantity.text = dishQuantity.toString();
+            updateTotal()
+
+            if(dishQuantity <= 1)
+                binding.dishDetailsDecrease.isEnabled = false
+        }
+    }
+
+    private fun updateTotal(){
+        val total = dishQuantity * dish.cost
+        binding.dishDetailsTotal.text =
+            getString(R.string.dish_details_total,
+                dishQuantity.toString(), dish.cost.toString(), total.toString())
+    }
+
+    private fun addToCart(){
+        finish()
     }
 }
