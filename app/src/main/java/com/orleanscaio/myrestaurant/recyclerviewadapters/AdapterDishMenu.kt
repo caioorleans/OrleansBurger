@@ -42,7 +42,7 @@ class AdapterDishMenu(context:Context,
         holder.nameTextView.text = dishes[position].name
         holder.priceTextView.text = buildString {
             append("R$ ")
-            append(dishes[position].cost.toString())
+            append("%.2f".format(dishes[position].cost))
         }
 
         val hours:Int = dishes[position].timeToPrepare/60

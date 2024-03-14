@@ -47,7 +47,7 @@ class DishDetailsActivity : AppCompatActivity() {
         binding.dishDetailsDishName.text = dish.name
         binding.dishDetailsDishIngredients.text = dish.ingredients
         binding.dishDetailsTimeToPrepare.text = getString(R.string.minutes, dish.timeToPrepare.toString())
-        binding.dishDetailsPrice.text = getString(R.string.currency, dish.cost.toString())
+        binding.dishDetailsPrice.text = getString(R.string.currency, "%.2f".format(dish.cost))
 
         binding.dishDetailsTimeToPrepare.setTextColor(
             if(dish.timeToPrepare > 20)
@@ -98,7 +98,7 @@ class DishDetailsActivity : AppCompatActivity() {
         val total = dishQuantity * dish.cost
         binding.dishDetailsTotal.text =
             getString(R.string.dish_details_total,
-                dishQuantity.toString(), dish.cost.toString(), total.toString())
+                dishQuantity.toString(), "%.2f".format(dish.cost), "%.2f".format(total))
     }
 
     private fun addToCart(){

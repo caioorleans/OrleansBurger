@@ -32,14 +32,20 @@ class AdapterItemCart(val context: Context, val cart: ArrayList<CartItem>):
         try {
             val image= context.assets.open(cart[position].dish.imageUri).readBytes()
             Glide.with(context).load(image)
-                .placeholder(R.drawable.baseline_restaurant_menu_24).centerCrop().into(holder.imageView)
+                .placeholder(R.drawable.baseline_restaurant_menu_24).centerCrop()
+                .into(holder.imageView)
         }catch (exception: IOException){
             Glide.with(context).load(R.drawable.baseline_sentiment_very_dissatisfied_24)
                 .centerCrop().into(holder.imageView)
         }
 
-        holder.totalTextView.text = cart[position].dish.cost.toString()
-        holder.quantityTextView.text = cart[position].numberOfDishes.toString()
+        holder.totalTextView.text =
+            context.getString(R.string.currency,
+                "%.2f".format(cart[position].numberOfDishes * cart[position].dish.cost))
+        holder.quantityTextView.text =
+            context.getString(R.string.card_cart_item_quantity, cart[position].numberOfDishes.toString())
+
+        holder.observationsTextView.text = cart[position].observations
     }
 
     override fun getItemCount(): Int {
@@ -50,12 +56,14 @@ class AdapterItemCart(val context: Context, val cart: ArrayList<CartItem>):
         var nameTextView: TextView
         var totalTextView:TextView
         var quantityTextView: TextView
+        var observationsTextView:TextView
 
         init {
             imageView = itemView.findViewById(R.id.card_cart_image)
             nameTextView = itemView.findViewById(R.id.card_cart_dish_name)
-            totalTextView = itemView.findViewById(R.id.card_cart_item_total)
-            quantityTextView = itemView.findViewById(R.id.card_cart_item_quantity)
+            totalTextView = itemView.findViewById(R.id.card_cart_item_total_value)
+            quantityTextView = itemView.findViewById(R.id.card_cart_dish_quantity)
+            observationsTextView = itemView.findViewById(R.id.card_cart_dish_observations)
         }
     }
 }

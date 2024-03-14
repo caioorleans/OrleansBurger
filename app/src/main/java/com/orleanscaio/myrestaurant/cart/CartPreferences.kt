@@ -25,4 +25,11 @@ object CartPreferences {
         val type = object : TypeToken<ArrayList<CartItem>>() {}.type
         return gson.fromJson(json, type) ?: mutableListOf()
     }
+
+    fun deleteCart(context:Context){
+        val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.remove(CART_KEY)
+        editor.apply()
+    }
 }

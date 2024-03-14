@@ -18,6 +18,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
+        style="@style/background"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="-40dp"
@@ -84,7 +85,6 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                style="@style/background_secondary"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +152,6 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        style="@style/background_secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

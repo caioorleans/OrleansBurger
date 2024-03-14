@@ -16,4 +16,10 @@
     <string name="dish_details_total">%1$s x R$ %2$s = R$ %3$s</string>
     <string name="placeholder">placeholder</string>
     <string name="menu">Cardápio</string>
+    <string name="edit">Editar</string>
+    <string name="exclude">Excluir</string>
+    <string name="card_cart_item_quantity">%1$s x</string>
+    <string name="total">Total:</string>
+    <string name="buy">Finalizar pedido</string>
+    <string name="sucess_buy">Pedido realizado com sucesso</string>
 </resources>

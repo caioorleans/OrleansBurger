@@ -6,7 +6,7 @@
         <item name="drawableTint">@color/black</item>
     </style>
 
-    <style name="background_secondary">
+    <style name="background">
         <item name="cardBackgroundColor">@color/ice_white</item>
         <item name="backgroundColor">@color/ice_white</item>
     </style>
