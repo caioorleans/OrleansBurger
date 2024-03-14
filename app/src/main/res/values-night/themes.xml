@@ -3,5 +3,11 @@
     <style name="Base.Theme.MyRestaurant" parent="Theme.Material3.DayNight">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="drawableTint">@color/white</item>
+    </style>
+
+    <style name="background_secondary">
+        <item name="cardBackgroundColor">@color/light_gray</item>
+        <item name="backgroundColor">@color/light_gray</item>
     </style>
 </resources>

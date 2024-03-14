@@ -3,6 +3,12 @@
     <style name="Base.Theme.MyRestaurant" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="drawableTint">@color/black</item>
+    </style>
+
+    <style name="background_secondary">
+        <item name="cardBackgroundColor">@color/ice_white</item>
+        <item name="backgroundColor">@color/ice_white</item>
     </style>
 
     <style name="Theme.MyRestaurant" parent="Base.Theme.MyRestaurant" />
