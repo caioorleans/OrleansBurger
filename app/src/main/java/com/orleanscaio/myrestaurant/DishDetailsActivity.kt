@@ -61,6 +61,7 @@ class DishDetailsActivity : AppCompatActivity() {
         if (cartItem != null){
             dishQuantity = cartItem.numberOfDishes
             binding.dishDetailsDishObservations.text = SpannableStringBuilder(cartItem.observations)
+            binding.dishDetailsAddToCart.text = getString(R.string.update_request)
         }
 
         if(dishQuantity <= 1)
@@ -106,11 +107,13 @@ class DishDetailsActivity : AppCompatActivity() {
         if (cartItem != null){
             cartItem.numberOfDishes = dishQuantity
             cartItem.observations = binding.dishDetailsDishObservations.text.toString()
+            Toast.makeText(this, "Alterações salvas", Toast.LENGTH_SHORT).show()
         }
         else{
             val newCartItem = CartItem(
                 dish, dishQuantity, binding.dishDetailsDishObservations.text.toString())
             cart.add(newCartItem)
+            Toast.makeText(this, "Pedido salvo no carrinho", Toast.LENGTH_SHORT).show()
         }
         CartPreferences.saveCart(this, ArrayList(cart))
 

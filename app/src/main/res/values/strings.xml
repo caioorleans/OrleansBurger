@@ -22,4 +22,5 @@
     <string name="total">Total:</string>
     <string name="buy">Finalizar pedido</string>
     <string name="sucess_buy">Pedido realizado com sucesso</string>
+    <string name="update_request">Atualizar pedido</string>
 </resources>

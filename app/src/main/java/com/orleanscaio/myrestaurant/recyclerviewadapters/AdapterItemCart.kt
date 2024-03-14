@@ -1,5 +1,6 @@
 package com.orleanscaio.myrestaurant.recyclerviewadapters
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,10 @@ import com.orleanscaio.myrestaurant.R
 import com.orleanscaio.myrestaurant.cart.CartItem
 import java.io.IOException
 
-class AdapterItemCart(val context: Context, val cart: ArrayList<CartItem>):
+class AdapterItemCart(
+    val context: Context,
+    private val cart: ArrayList<CartItem>,
+    private var recycler: ItemCartAdapterInterface):
     RecyclerView.Adapter<AdapterItemCart.MyViewHolder>() {
 
 
@@ -46,6 +50,15 @@ class AdapterItemCart(val context: Context, val cart: ArrayList<CartItem>):
             context.getString(R.string.card_cart_item_quantity, cart[position].numberOfDishes.toString())
 
         holder.observationsTextView.text = cart[position].observations
+
+        holder.editView.setOnClickListener { recycler.onClickEdit(cart[position].dish)}
+
+        holder.deleteView.setOnClickListener { AlertDialog.Builder(context)
+            .setTitle("Confirmação de exclusão")
+            .setMessage("Tem certeza que deseja excluir esse ítem do carrinho?")
+            .setPositiveButton(android.R.string.ok){ _, _ ->recycler.onClickDelete(cart[position].dish) }
+            .setNegativeButton(android.R.string.cancel){ _, _ -> null}
+            .show() }
     }
 
     override fun getItemCount(): Int {
@@ -57,6 +70,8 @@ class AdapterItemCart(val context: Context, val cart: ArrayList<CartItem>):
         var totalTextView:TextView
         var quantityTextView: TextView
         var observationsTextView:TextView
+        var deleteView: TextView
+        var editView: TextView
 
         init {
             imageView = itemView.findViewById(R.id.card_cart_image)
@@ -64,6 +79,9 @@ class AdapterItemCart(val context: Context, val cart: ArrayList<CartItem>):
             totalTextView = itemView.findViewById(R.id.card_cart_item_total_value)
             quantityTextView = itemView.findViewById(R.id.card_cart_dish_quantity)
             observationsTextView = itemView.findViewById(R.id.card_cart_dish_observations)
+            deleteView = itemView.findViewById(R.id.card_cart_item_exclude)
+            editView = itemView.findViewById(R.id.card_cart_item_edit)
+
         }
     }
 }
