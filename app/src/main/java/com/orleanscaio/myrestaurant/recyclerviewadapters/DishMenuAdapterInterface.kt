@@ -2,6 +2,6 @@ package com.orleanscaio.myrestaurant.recyclerviewadapters
 
 import com.orleanscaio.myrestaurant.dish.Dish
 
-interface RecyclerViewAdapterInterface {
+interface DishMenuAdapterInterface {
     fun onItemClick(dish: Dish)
 }

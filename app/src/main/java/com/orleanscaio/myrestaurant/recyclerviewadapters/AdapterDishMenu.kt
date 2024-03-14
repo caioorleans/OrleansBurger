@@ -14,10 +14,10 @@ import java.io.IOException
 
 class AdapterDishMenu(context:Context,
                       dishes:ArrayList<Dish>,
-                      recyclerInterface: RecyclerViewAdapterInterface)
+                      recyclerInterface: DishMenuAdapterInterface)
     : RecyclerView.Adapter<AdapterDishMenu.MyViewHolder>() {
 
-    private var recyclerViewInterface: RecyclerViewAdapterInterface
+    private var recyclerViewInterface: DishMenuAdapterInterface
 
     private var context: Context
     private var dishes: ArrayList<Dish>

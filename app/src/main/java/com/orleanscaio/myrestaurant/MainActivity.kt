@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,9 +16,9 @@ import com.orleanscaio.myrestaurant.databinding.ActivityMainBinding
 import com.orleanscaio.myrestaurant.dish.Dish
 import com.orleanscaio.myrestaurant.dish.DishesXmlParser
 import com.orleanscaio.myrestaurant.recyclerviewadapters.AdapterDishMenu
-import com.orleanscaio.myrestaurant.recyclerviewadapters.RecyclerViewAdapterInterface
+import com.orleanscaio.myrestaurant.recyclerviewadapters.DishMenuAdapterInterface
 
-class MainActivity : AppCompatActivity(), RecyclerViewAdapterInterface {
+class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var dishes: ArrayList<Dish>
