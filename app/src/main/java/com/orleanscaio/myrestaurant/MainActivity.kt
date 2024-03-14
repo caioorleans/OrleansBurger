@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapterInterface {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.item_cart -> {
-                Toast.makeText(this, "Item de cart clicado", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, CartActivity::class.java))
                 true
             }
             else -> {

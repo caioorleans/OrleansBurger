@@ -14,4 +14,5 @@
     <string name="decrease">-</string>
     <string name="add_to_cart">Adicionar ao carrinho</string>
     <string name="dish_details_total">%1$s x R$ %2$s = R$ %3$s</string>
+    <string name="placeholder">placeholder</string>
 </resources>
