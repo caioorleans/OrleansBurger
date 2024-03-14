@@ -62,11 +62,11 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapterInterface {
         val foodCategorySpinner = findViewById<Spinner>(R.id.food_category_spinner)
 
         val foodCategories = arrayOf(
+            getString(R.string.all_meals),
             getString(R.string.appetizer),
             getString(R.string.main_course),
             getString(R.string.dessert),
-            getString(R.string.drinks),
-            getString(R.string.all_meals)
+            getString(R.string.drinks)
         )
 
         val arrayAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item, foodCategories)
@@ -91,27 +91,19 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapterInterface {
                 position: Int,
                 id: Long
             ) {
-                var foodFiltered: ArrayList<Dish> = ArrayList()
+                val foodFiltered: ArrayList<Dish>
                 when(position){
-                    0 -> {
-                        for (dish in dishes){
-                            if (dish.category == "Appetizer") foodFiltered.add(dish)
-                        }
-                    }
                     1 -> {
-                        for (dish in dishes){
-                            if (dish.category == "Main Course") foodFiltered.add(dish)
-                        }
+                        foodFiltered = dishes.filter { it.category ==  "Appetizer"} as ArrayList<Dish>
                     }
                     2 -> {
-                        for (dish in dishes){
-                            if (dish.category == "Dessert") foodFiltered.add(dish)
-                        }
+                        foodFiltered = dishes.filter { it.category ==  "Main Course"} as ArrayList<Dish>
                     }
                     3 -> {
-                        for (dish in dishes){
-                            if (dish.category == "Drinks") foodFiltered.add(dish)
-                        }
+                        foodFiltered = dishes.filter { it.category ==  "Dessert"} as ArrayList<Dish>
+                    }
+                    4 -> {
+                        foodFiltered = dishes.filter { it.category ==  "Drinks"} as ArrayList<Dish>
                     }
                     else -> {
                         foodFiltered = dishes;
