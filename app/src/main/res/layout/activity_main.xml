@@ -9,12 +9,13 @@
     tools:context=".MainActivity">
 
     <TextView
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="32sp"
         android:layout_marginTop="32dp"
-        android:text="@string/menu"/>
+        android:text="@string/menu"
+        android:textAlignment="center"
+        android:textSize="32sp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

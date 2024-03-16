@@ -33,6 +33,7 @@
 
             <TextView
                 android:id="@+id/dish_name"
+                style="@style/myCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -44,6 +45,7 @@
 
             <TextView
                 android:id="@+id/dish_cost"
+                style="@style/myCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="R$ 0,00"
@@ -53,6 +55,7 @@
 
             <TextView
                 android:id="@+id/dish_preparation_time"
+                style="@style/myCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0 h 0 min"

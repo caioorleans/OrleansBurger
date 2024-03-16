@@ -53,7 +53,7 @@ class AdapterItemCart(
 
         holder.editView.setOnClickListener { recycler.onClickEdit(cart[position].dish)}
 
-        holder.deleteView.setOnClickListener { AlertDialog.Builder(context)
+        holder.deleteView.setOnClickListener { AlertDialog.Builder(context, R.style.MyAlertDialog)
             .setTitle("Confirmação de exclusão")
             .setMessage("Tem certeza que deseja excluir esse ítem do carrinho?")
             .setPositiveButton(android.R.string.ok){ _, _ ->recycler.onClickDelete(cart[position].dish) }

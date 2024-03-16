@@ -1,13 +1,70 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MyRestaurant" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.MyRestaurant" parent="Theme.AppCompat.DayNight">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="drawableTint">@color/white</item>
+        <item name="android:statusBarColor">@color/main_red_dark</item>
+        <item name="android:navigationBarColor">@color/main_red_dark</item>
+        <item name="actionBarStyle">@style/myActionBar</item>
+        <item name="android:textColor">@color/ice_white</item>
+        <item name="android:windowBackground">@color/main_light_brown</item>
+        <item name="buttonStyle">@style/red_btn</item>
+        <item name="alertDialogStyle">@style/MyAlertDialog</item>
+        <item name="cardViewStyle">@style/myCardView</item>
+    </style>
+
+    <style name="title">
+        <item name="fontFamily">@font/aclonica</item>
+        <item name="android:textColor">@color/ice_white</item>
     </style>
 
     <style name="background">
-        <item name="cardBackgroundColor">@color/dark_gray</item>
-        <item name="backgroundColor">@color/dark_gray</item>
+        <item name="cardBackgroundColor">@color/main_brown</item>
+        <item name="backgroundColor">@color/main_brown</item>
+    </style>
+
+    <style name="myCardView">
+        <item name="cardBackgroundColor">@color/main_brown</item>
+        <item name="android:textColor">@color/ice_white</item>
+    </style>
+
+    <style name="myEditText">
+        <item name="cardBackgroundColor">@color/main_light_brown</item>
+        <item name="backgroundColor">@color/main_light_brown</item>
+    </style>
+
+    <style name="footer">
+        <item name="cardBackgroundColor">@color/main_red_dark</item>
+        <item name="android:textColor">@color/ice_white</item>
+    </style>
+
+    <style name="red_btn" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/primary_button_dark</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textColor">@color/ice_white</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="white_btn" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/secondary_button</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textColor">@color/main_brown</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="myActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/main_red_dark</item>
+        <item name="drawableTint">@color/ice_white</item>
+        <item name="titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>
+
+    <style name="MyActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/ice_white</item>
+    </style>
+
+    <style name="MyAlertDialog" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="android:textColor">@color/main_brown</item>
     </style>
 </resources>

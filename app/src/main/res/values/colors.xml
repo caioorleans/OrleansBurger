@@ -7,4 +7,12 @@
     <color name="ice_white">#F8F8F8</color>
     <color name="light_gray">#7C7C7C</color>
     <color name="dark_gray">#141218</color>
+    <color name="light_brown">#E8B072</color>
+    <color name="background_light_brown">#F8D6B1</color>
+    <color name="main_red">#D1202F</color>
+    <color name="main_red_dark">#951721</color>
+    <color name="main_light_brown">#8F5B4A</color>
+    <color name="main_brown">#5E3C31</color>
+    <color name="washed_red">#C56F76</color>
+    <color name="washed_red_dark">#8C4E53</color>
 </resources>
