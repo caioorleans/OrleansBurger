@@ -40,22 +40,22 @@ class DishDetailsActivity : AppCompatActivity() {
         try {
             val IMAGE= assets.open(dish.imageUri).readBytes()
             Glide.with(this).load(IMAGE)
-                .centerCrop().into(binding.dishDetailsDishImage)
+                .centerCrop().into(binding.imageDishDetails)
         }
         catch (ex:IOException){
             Glide.with(this).load(R.drawable.baseline_sentiment_very_dissatisfied_24)
-                .centerCrop().into(binding.dishDetailsDishImage)
+                .centerCrop().into(binding.imageDishDetails)
         }
 
-        binding.dishDetailsDishName.text = dish.name
-        binding.dishDetailsDishIngredients.text = dish.ingredients
+        binding.textDishDetailsDishName.text = dish.name
+        binding.textDishDetailsDishIngredients.text = dish.ingredients
         //Formata e seta o tempo de preparo
-        binding.dishDetailsTimeToPrepare.text = getString(R.string.minutes, dish.timeToPrepare.toString())
+        binding.textDishDetailsTimeToPrepare.text = getString(R.string.minutes, dish.timeToPrepare.toString())
         //Formata e seta o valor do prato
-        binding.dishDetailsPrice.text = getString(R.string.currency, "%.2f".format(dish.cost))
+        binding.textDishDetailsPrice.text = getString(R.string.currency, "%.2f".format(dish.cost))
 
         //Seta a cor do texto do tempo de preparo, dependendo do tempo
-        binding.dishDetailsTimeToPrepare.setTextColor(
+        binding.textDishDetailsTimeToPrepare.setTextColor(
             if(dish.timeToPrepare > 20)
                 ContextCompat.getColor(this, R.color.red)
             else
@@ -69,47 +69,47 @@ class DishDetailsActivity : AppCompatActivity() {
         //atualiza a interface com as informações previamente registradas
         if (CART_ITEM != null){
             dishQuantity = CART_ITEM.numberOfDishes
-            binding.dishDetailsDishObservations.text = SpannableStringBuilder(CART_ITEM.observations)
-            binding.dishDetailsAddToCart.text = getString(R.string.update_request)
+            binding.editDishDetailsDishObservations.text = SpannableStringBuilder(CART_ITEM.observations)
+            binding.buttonDishDetailsAddToCart.text = getString(R.string.update_request)
         }
 
         //desabilita o botão de diminuir quantidade de item se quantidade for <=1
         if(dishQuantity <= 1)
-            binding.dishDetailsDecrease.isEnabled = false
-        binding.dishDetailsQuantity.text = dishQuantity.toString();
+            binding.buttonDishDetailsDecrease.isEnabled = false
+        binding.textDishDetailsQuantity.text = dishQuantity.toString();
 
         //seta os listeners dos botões de incremento e decremento
-        binding.dishDetailsIncrease.setOnClickListener { increase() }
-        binding.dishDetailsDecrease.setOnClickListener { decrease() }
+        binding.buttonDishDetailsIncrease.setOnClickListener { increase() }
+        binding.buttonDishDetailsDecrease.setOnClickListener { decrease() }
 
         //atualiza o valor total
         updateTotal()
 
-        binding.dishDetailsAddToCart.setOnClickListener { addToCart() }
+        binding.buttonDishDetailsAddToCart.setOnClickListener { addToCart() }
     }
 
     private fun increase(){
         dishQuantity++
-        binding.dishDetailsQuantity.text = dishQuantity.toString();
+        binding.textDishDetailsQuantity.text = dishQuantity.toString();
         updateTotal()
         if(dishQuantity > 1)
-            binding.dishDetailsDecrease.isEnabled = true
+            binding.buttonDishDetailsDecrease.isEnabled = true
     }
 
     private fun decrease(){
         if(dishQuantity >1){
             dishQuantity--
-            binding.dishDetailsQuantity.text = dishQuantity.toString();
+            binding.textDishDetailsQuantity.text = dishQuantity.toString();
             updateTotal()
 
             if(dishQuantity <= 1)
-                binding.dishDetailsDecrease.isEnabled = false
+                binding.buttonDishDetailsDecrease.isEnabled = false
         }
     }
 
     private fun updateTotal(){
         val TOTAL = dishQuantity * dish.cost
-        binding.dishDetailsTotal.text =
+        binding.textDishDetailsTotal.text =
             getString(R.string.dish_details_total,
                 dishQuantity.toString(), "%.2f".format(dish.cost), "%.2f".format(TOTAL))
     }
@@ -119,12 +119,12 @@ class DishDetailsActivity : AppCompatActivity() {
         val CART_ITEM = cart.find { it.dish.id == dish.id }
         if (CART_ITEM != null){
             CART_ITEM.numberOfDishes = dishQuantity
-            CART_ITEM.observations = binding.dishDetailsDishObservations.text.toString()
+            CART_ITEM.observations = binding.editDishDetailsDishObservations.text.toString()
             Toast.makeText(this, "Alterações salvas", Toast.LENGTH_SHORT).show()
         }
         else{
             val NEW_CART_ITEM = CartItem(
-                dish, dishQuantity, binding.dishDetailsDishObservations.text.toString())
+                dish, dishQuantity, binding.editDishDetailsDishObservations.text.toString())
             cart.add(NEW_CART_ITEM)
             Toast.makeText(this, "Pedido salvo no carrinho", Toast.LENGTH_SHORT).show()
         }

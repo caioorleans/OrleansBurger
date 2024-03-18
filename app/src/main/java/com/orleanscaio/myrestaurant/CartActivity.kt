@@ -68,7 +68,7 @@ class CartActivity : AppCompatActivity(), ItemCartAdapterInterface {
 
     private fun sumTotalCost(){
         val TOTAL = cart.sumOf { it.numberOfDishes * it.dish.cost.toDouble() }.toFloat()
-        binding.cartTotal.text = this.getString(R.string.currency, "%.2f".format(TOTAL))
+        binding.textCartTotal.text = this.getString(R.string.currency, "%.2f".format(TOTAL))
     }
     private fun blockButtonIfCartEmpty(){
         if(cart.isEmpty()){
@@ -76,7 +76,7 @@ class CartActivity : AppCompatActivity(), ItemCartAdapterInterface {
         }
     }
     private fun populateRecyclerViewCart(cart: ArrayList<CartItem>){
-        val RECYCLER_VIEW: RecyclerView = findViewById(R.id.cart_recycler_view)
+        val RECYCLER_VIEW: RecyclerView = findViewById(R.id.recycler_cart)
         val ADAPTER_ITEM_CART = AdapterItemCart(this, cart, this)
         RECYCLER_VIEW.adapter = ADAPTER_ITEM_CART
         RECYCLER_VIEW.layoutManager = LinearLayoutManager(this)

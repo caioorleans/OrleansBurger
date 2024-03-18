@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/dish_image"
+                android:id="@+id/image_dish"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -32,36 +32,36 @@
                 app:srcCompat="@drawable/ic_launcher_background" />
 
             <TextView
-                android:id="@+id/dish_name"
+                android:id="@+id/text_dish_name"
                 style="@style/myCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:text="Name of dish"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/dish_cost"
-                app:layout_constraintStart_toEndOf="@+id/dish_image"
+                app:layout_constraintBottom_toTopOf="@+id/text_dish_cost"
+                app:layout_constraintStart_toEndOf="@+id/image_dish"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/dish_cost"
+                android:id="@+id/text_dish_cost"
                 style="@style/myCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="R$ 0,00"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/dish_name"
-                app:layout_constraintTop_toBottomOf="@+id/dish_name" />
+                app:layout_constraintStart_toStartOf="@+id/text_dish_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_dish_name" />
 
             <TextView
-                android:id="@+id/dish_preparation_time"
+                android:id="@+id/text_dish_preparation_time"
                 style="@style/myCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0 h 0 min"
                 android:layout_marginStart="12dp"
-                app:layout_constraintStart_toEndOf="@+id/dish_cost"
-                app:layout_constraintTop_toTopOf="@+id/dish_cost" />
+                app:layout_constraintStart_toEndOf="@+id/text_dish_cost"
+                app:layout_constraintTop_toTopOf="@+id/text_dish_cost" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

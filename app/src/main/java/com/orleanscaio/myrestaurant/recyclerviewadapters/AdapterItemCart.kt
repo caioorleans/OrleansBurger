@@ -74,13 +74,13 @@ class AdapterItemCart(
         var editView: TextView
 
         init {
-            imageView = itemView.findViewById(R.id.card_cart_image)
-            nameTextView = itemView.findViewById(R.id.card_cart_dish_name)
-            totalTextView = itemView.findViewById(R.id.card_cart_item_total_value)
-            quantityTextView = itemView.findViewById(R.id.card_cart_dish_quantity)
-            observationsTextView = itemView.findViewById(R.id.card_cart_dish_observations)
-            deleteView = itemView.findViewById(R.id.card_cart_item_exclude)
-            editView = itemView.findViewById(R.id.card_cart_item_edit)
+            imageView = itemView.findViewById(R.id.image_card_cart)
+            nameTextView = itemView.findViewById(R.id.text_card_cart_dish_name)
+            totalTextView = itemView.findViewById(R.id.text_card_cart_item_total_value)
+            quantityTextView = itemView.findViewById(R.id.text_card_cart_dish_quantity)
+            observationsTextView = itemView.findViewById(R.id.text_card_cart_dish_observations)
+            deleteView = itemView.findViewById(R.id.button_card_cart_item_exclude)
+            editView = itemView.findViewById(R.id.button_card_cart_item_edit)
 
         }
     }

@@ -81,10 +81,10 @@ class AdapterDishMenu(context:Context,
         var priceTextView: TextView
         var preparationTimeTextView: TextView
         init {
-            imageView = itemView.findViewById(R.id.dish_image)
-            nameTextView = itemView.findViewById(R.id.dish_name)
-            priceTextView = itemView.findViewById(R.id.dish_cost)
-            preparationTimeTextView = itemView.findViewById(R.id.dish_preparation_time)
+            imageView = itemView.findViewById(R.id.image_dish)
+            nameTextView = itemView.findViewById(R.id.text_dish_name)
+            priceTextView = itemView.findViewById(R.id.text_dish_cost)
+            preparationTimeTextView = itemView.findViewById(R.id.text_dish_preparation_time)
         }
 
     }

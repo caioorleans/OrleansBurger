@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
 
     //Popula o spinner com as categorias de prato
     private fun createSpinner(context:Context):Spinner{
-        val FOOD_CATEGORY_SPINNER = findViewById<Spinner>(R.id.food_category_spinner)
+        val FOOD_CATEGORY_SPINNER = findViewById<Spinner>(R.id.spinner_food_category)
 
         val FOOD_CATEGORIES = arrayOf(
             getString(R.string.all_meals),

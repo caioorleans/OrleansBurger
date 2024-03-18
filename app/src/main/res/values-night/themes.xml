@@ -23,8 +23,8 @@
     </style>
 
     <style name="background">
-        <item name="cardBackgroundColor">@color/main_brown</item>
-        <item name="backgroundColor">@color/main_brown</item>
+        <item name="cardBackgroundColor">@color/main_light_brown</item>
+        <item name="backgroundColor">@color/main_light_brown</item>
     </style>
 
     <style name="myCardView">
@@ -33,11 +33,11 @@
     </style>
 
     <style name="myEditText">
-        <item name="cardBackgroundColor">@color/main_light_brown</item>
-        <item name="backgroundColor">@color/main_light_brown</item>
+        <item name="cardBackgroundColor">@color/main_brown</item>
+        <item name="backgroundColor">@color/main_brown</item>
     </style>
 
-    <style name="footer">
+    <style name="card_footer">
         <item name="cardBackgroundColor">@color/main_red_dark</item>
         <item name="android:textColor">@color/ice_white</item>
     </style>
