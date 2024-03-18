@@ -3,12 +3,8 @@ package com.orleanscaio.myrestaurant
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColor
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.orleanscaio.myrestaurant.cart.CartItem
 import com.orleanscaio.myrestaurant.cart.CartPreferences
@@ -27,16 +23,23 @@ class DishDetailsActivity : AppCompatActivity() {
         binding = ActivityDishDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //TODO: Buscar função para substituir essa que está depreciada
+        //Recebe o prato enviado pela página anterior
         dish = intent.getSerializableExtra("dish") as Dish
+
+        //Carrega o carrinho a partir dos shared preferences
         cart = CartPreferences.loadCart(this)
 
         bindActivityElements(dish)
     }
 
+    //Faz o binding dos elementos da página
     private fun bindActivityElements(dish: Dish){
+        //Carrega a imagem
+        //Caso a imagem não seja encontrada, vai exibir um simbolo genérico
         try {
-            val image= assets.open(dish.imageUri).readBytes()
-            Glide.with(this).load(image)
+            val IMAGE= assets.open(dish.imageUri).readBytes()
+            Glide.with(this).load(IMAGE)
                 .centerCrop().into(binding.dishDetailsDishImage)
         }
         catch (ex:IOException){
@@ -46,9 +49,12 @@ class DishDetailsActivity : AppCompatActivity() {
 
         binding.dishDetailsDishName.text = dish.name
         binding.dishDetailsDishIngredients.text = dish.ingredients
+        //Formata e seta o tempo de preparo
         binding.dishDetailsTimeToPrepare.text = getString(R.string.minutes, dish.timeToPrepare.toString())
+        //Formata e seta o valor do prato
         binding.dishDetailsPrice.text = getString(R.string.currency, "%.2f".format(dish.cost))
 
+        //Seta a cor do texto do tempo de preparo, dependendo do tempo
         binding.dishDetailsTimeToPrepare.setTextColor(
             if(dish.timeToPrepare > 20)
                 ContextCompat.getColor(this, R.color.red)
@@ -56,21 +62,27 @@ class DishDetailsActivity : AppCompatActivity() {
                 ContextCompat.getColor(this,R.color.green)
         )
 
-        val cartItem = cart.find { it.dish.id == dish.id }
+        //procura o prato dentro do carrinho
+        val CART_ITEM = cart.find { it.dish.id == dish.id }
 
-        if (cartItem != null){
-            dishQuantity = cartItem.numberOfDishes
-            binding.dishDetailsDishObservations.text = SpannableStringBuilder(cartItem.observations)
+        //se o prato já estiver no carrinho
+        //atualiza a interface com as informações previamente registradas
+        if (CART_ITEM != null){
+            dishQuantity = CART_ITEM.numberOfDishes
+            binding.dishDetailsDishObservations.text = SpannableStringBuilder(CART_ITEM.observations)
             binding.dishDetailsAddToCart.text = getString(R.string.update_request)
         }
 
+        //desabilita o botão de diminuir quantidade de item se quantidade for <=1
         if(dishQuantity <= 1)
             binding.dishDetailsDecrease.isEnabled = false
         binding.dishDetailsQuantity.text = dishQuantity.toString();
 
+        //seta os listeners dos botões de incremento e decremento
         binding.dishDetailsIncrease.setOnClickListener { increase() }
         binding.dishDetailsDecrease.setOnClickListener { decrease() }
 
+        //atualiza o valor total
         updateTotal()
 
         binding.dishDetailsAddToCart.setOnClickListener { addToCart() }
@@ -96,23 +108,24 @@ class DishDetailsActivity : AppCompatActivity() {
     }
 
     private fun updateTotal(){
-        val total = dishQuantity * dish.cost
+        val TOTAL = dishQuantity * dish.cost
         binding.dishDetailsTotal.text =
             getString(R.string.dish_details_total,
-                dishQuantity.toString(), "%.2f".format(dish.cost), "%.2f".format(total))
+                dishQuantity.toString(), "%.2f".format(dish.cost), "%.2f".format(TOTAL))
     }
 
+    //Adiciona o item ao carrinho ou atualiza as infos caso o item já estivesse no mesmo
     private fun addToCart(){
-        val cartItem = cart.find { it.dish.id == dish.id }
-        if (cartItem != null){
-            cartItem.numberOfDishes = dishQuantity
-            cartItem.observations = binding.dishDetailsDishObservations.text.toString()
+        val CART_ITEM = cart.find { it.dish.id == dish.id }
+        if (CART_ITEM != null){
+            CART_ITEM.numberOfDishes = dishQuantity
+            CART_ITEM.observations = binding.dishDetailsDishObservations.text.toString()
             Toast.makeText(this, "Alterações salvas", Toast.LENGTH_SHORT).show()
         }
         else{
-            val newCartItem = CartItem(
+            val NEW_CART_ITEM = CartItem(
                 dish, dishQuantity, binding.dishDetailsDishObservations.text.toString())
-            cart.add(newCartItem)
+            cart.add(NEW_CART_ITEM)
             Toast.makeText(this, "Pedido salvo no carrinho", Toast.LENGTH_SHORT).show()
         }
         CartPreferences.saveCart(this, ArrayList(cart))

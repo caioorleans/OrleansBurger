@@ -31,10 +31,10 @@ class AdapterDishMenu(context:Context,
         viewType: Int
     ): MyViewHolder {
         //This is where the layout is inflated (givin a look to our rows)
-        val inflater: LayoutInflater = LayoutInflater.from(context)
-        val view:View = inflater.inflate(R.layout.card_dish_menu, parent, false)
+        val INFLATER: LayoutInflater = LayoutInflater.from(context)
+        val VIEW:View = INFLATER.inflate(R.layout.card_dish_menu, parent, false)
 
-        return MyViewHolder(view)
+        return MyViewHolder(VIEW)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -45,18 +45,18 @@ class AdapterDishMenu(context:Context,
             append("%.2f".format(dishes[position].cost))
         }
 
-        val hours:Int = dishes[position].timeToPrepare/60
-        val minutes:Int = dishes[position].timeToPrepare%60
+        val HOUR:Int = dishes[position].timeToPrepare/60
+        val MINUTES:Int = dishes[position].timeToPrepare%60
         holder.preparationTimeTextView.text = buildString {
-            append(hours)
+            append(HOUR)
             append(" h ")
-            append(minutes)
+            append(MINUTES)
             append(" m")
         }
 
         try {
-            val image= context.assets.open(dishes[position].imageUri).readBytes()
-            Glide.with(context).load(image)
+            val IMAGE= context.assets.open(dishes[position].imageUri).readBytes()
+            Glide.with(context).load(IMAGE)
                 .placeholder(R.drawable.baseline_restaurant_menu_24).centerCrop().into(holder.imageView)
         }catch (exception:IOException){
             Glide.with(context).load(R.drawable.baseline_sentiment_very_dissatisfied_24)

@@ -6,7 +6,7 @@ import java.lang.Exception
 class DishesXmlParser {
 
     fun parseDishes(xmlResourceId: Int, context:Context): ArrayList<Dish> {
-        val dishes = ArrayList<Dish>()
+        val DISHES = ArrayList<Dish>()
 
         try {
             val parser = context.resources.getXml(xmlResourceId)
@@ -56,8 +56,8 @@ class DishesXmlParser {
                     }
                     XmlPullParser.END_TAG -> {
                         if (parser.name == "dish") {
-                            val dish = Dish(dishId, category, name, ingredients, timeToPrepare, cost, imageUri)
-                            dishes.add(dish)
+                            val DISH = Dish(dishId, category, name, ingredients, timeToPrepare, cost, imageUri)
+                            DISHES.add(DISH)
                         }
                     }
                 }
@@ -68,7 +68,7 @@ class DishesXmlParser {
             e.printStackTrace()
         }
 
-        return dishes
+        return DISHES
     }
 
 }

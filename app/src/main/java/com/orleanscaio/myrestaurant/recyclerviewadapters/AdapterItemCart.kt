@@ -15,7 +15,7 @@ import java.io.IOException
 
 class AdapterItemCart(
     val context: Context,
-    private val cart: ArrayList<CartItem>,
+    private val CART: ArrayList<CartItem>,
     private var recycler: ItemCartAdapterInterface):
     RecyclerView.Adapter<AdapterItemCart.MyViewHolder>() {
 
@@ -24,18 +24,18 @@ class AdapterItemCart(
         parent: ViewGroup,
         viewType: Int
     ): AdapterItemCart.MyViewHolder {
-        val inflater: LayoutInflater = LayoutInflater.from(context)
-        val view:View = inflater.inflate(R.layout.card_item_cart, parent, false)
+        val INFLATER: LayoutInflater = LayoutInflater.from(context)
+        val VIEW:View = INFLATER.inflate(R.layout.card_item_cart, parent, false)
 
-        return AdapterItemCart.MyViewHolder(view)
+        return AdapterItemCart.MyViewHolder(VIEW)
     }
 
     override fun onBindViewHolder(holder: AdapterItemCart.MyViewHolder, position: Int) {
-        holder.nameTextView.text = cart[position].dish.name
+        holder.nameTextView.text = CART[position].dish.name
 
         try {
-            val image= context.assets.open(cart[position].dish.imageUri).readBytes()
-            Glide.with(context).load(image)
+            val IMAGE= context.assets.open(CART[position].dish.imageUri).readBytes()
+            Glide.with(context).load(IMAGE)
                 .placeholder(R.drawable.baseline_restaurant_menu_24).centerCrop()
                 .into(holder.imageView)
         }catch (exception: IOException){
@@ -45,24 +45,24 @@ class AdapterItemCart(
 
         holder.totalTextView.text =
             context.getString(R.string.currency,
-                "%.2f".format(cart[position].numberOfDishes * cart[position].dish.cost))
+                "%.2f".format(CART[position].numberOfDishes * CART[position].dish.cost))
         holder.quantityTextView.text =
-            context.getString(R.string.card_cart_item_quantity, cart[position].numberOfDishes.toString())
+            context.getString(R.string.card_cart_item_quantity, CART[position].numberOfDishes.toString())
 
-        holder.observationsTextView.text = cart[position].observations
+        holder.observationsTextView.text = CART[position].observations
 
-        holder.editView.setOnClickListener { recycler.onClickEdit(cart[position].dish)}
+        holder.editView.setOnClickListener { recycler.onClickEdit(CART[position].dish)}
 
         holder.deleteView.setOnClickListener { AlertDialog.Builder(context, R.style.MyAlertDialog)
             .setTitle("Confirmação de exclusão")
             .setMessage("Tem certeza que deseja excluir esse ítem do carrinho?")
-            .setPositiveButton(android.R.string.ok){ _, _ ->recycler.onClickDelete(cart[position].dish) }
+            .setPositiveButton(android.R.string.ok){ _, _ ->recycler.onClickDelete(CART[position].dish) }
             .setNegativeButton(android.R.string.cancel){ _, _ -> null}
             .show() }
     }
 
     override fun getItemCount(): Int {
-        return cart.size
+        return CART.size
     }
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var imageView: ImageView

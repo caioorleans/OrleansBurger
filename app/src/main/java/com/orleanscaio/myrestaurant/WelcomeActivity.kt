@@ -10,17 +10,22 @@ import com.orleanscaio.myrestaurant.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
 
+    private val HANDLER: Handler = Handler(Looper.getMainLooper())
     private lateinit var binding: ActivityWelcomeBinding
-    private val handler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        //Esconde a action bar
         supportActionBar?.hide()
 
-        handler.postDelayed({
+        //Executa as ações somente após uma determinada quantidade de tempo
+        HANDLER.postDelayed({
+            //Indica que a activity será encerrada após a transição
             finishAfterTransition()
+            //Inicia a próxima activity
             startActivity(Intent(this,MainActivity::class.java))
         }, 3000)
     }

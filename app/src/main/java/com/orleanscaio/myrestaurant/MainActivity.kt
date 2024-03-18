@@ -27,18 +27,23 @@ class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val spinner = createSpinner(this);
+        //Cria o spinner para posteriormente ser populado
+        val SPINNER = createSpinner(this);
 
+        //carrega todos os pratos a partir de um arquivo xml
         dishes = DishesXmlParser().parseDishes(R.xml.dishes, this);
 
-        selectDishCategory(dishes, spinner)
+        //Função responsável por separar os pratos por categoria
+        selectDishCategory(dishes, SPINNER)
     }
 
+    //Insere o menu_main_Activity na action bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main_activity, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    //Funciona como um onClickListener para cada item do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.item_cart -> {
@@ -51,16 +56,19 @@ class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
         }
     }
 
+    //Método herdado de DishMenuAdapterInterface
+    //Redireciona para a página do prato
     override fun onItemClick(dish: Dish) {
-        val intent = Intent(this,DishDetailsActivity::class.java)
-        intent.putExtra("dish", dish)
-        startActivity(intent)
+        val INTENT = Intent(this,DishDetailsActivity::class.java)
+        INTENT.putExtra("dish", dish)
+        startActivity(INTENT)
     }
 
+    //Popula o spinner com as categorias de prato
     private fun createSpinner(context:Context):Spinner{
-        val foodCategorySpinner = findViewById<Spinner>(R.id.food_category_spinner)
+        val FOOD_CATEGORY_SPINNER = findViewById<Spinner>(R.id.food_category_spinner)
 
-        val foodCategories = arrayOf(
+        val FOOD_CATEGORIES = arrayOf(
             getString(R.string.all_meals),
             getString(R.string.appetizer),
             getString(R.string.main_course),
@@ -68,20 +76,22 @@ class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
             getString(R.string.drinks)
         )
 
-        val arrayAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item, foodCategories)
+        val ARRAY_ADAPTER = ArrayAdapter(context,android.R.layout.simple_spinner_dropdown_item, FOOD_CATEGORIES)
 
-        foodCategorySpinner.adapter = arrayAdapter
+        FOOD_CATEGORY_SPINNER.adapter = ARRAY_ADAPTER
 
-        return foodCategorySpinner
+        return FOOD_CATEGORY_SPINNER
     }
 
+    //Popula o recycler view a partir de uma lista de pratos
     private fun populateRecyclerViewMenuDishes(dishes: ArrayList<Dish>){
-        val recyclerView:RecyclerView = findViewById(R.id.recycler_view_dishes)
-        val adapterDishMenu = AdapterDishMenu(this, dishes, this)
-        recyclerView.adapter = adapterDishMenu
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val RECYCLER_VIEW:RecyclerView = findViewById(R.id.recycler_view_dishes)
+        val ADAPTER_DISH_MENU = AdapterDishMenu(this, dishes, this)
+        RECYCLER_VIEW.adapter = ADAPTER_DISH_MENU
+        RECYCLER_VIEW.layoutManager = LinearLayoutManager(this)
     }
 
+    //Seleciona os pratos a partir da categoria e os manda para populares o recycler view
     private fun selectDishCategory(dishes: ArrayList<Dish>, spinner:Spinner){
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -90,25 +100,25 @@ class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
                 position: Int,
                 id: Long
             ) {
-                val foodFiltered: ArrayList<Dish>
+                val FILTERED_FOOD: ArrayList<Dish>
                 when(position){
                     1 -> {
-                        foodFiltered = dishes.filter { it.category ==  "Appetizer"} as ArrayList<Dish>
+                        FILTERED_FOOD = dishes.filter { it.category ==  "Appetizer"} as ArrayList<Dish>
                     }
                     2 -> {
-                        foodFiltered = dishes.filter { it.category ==  "Main Course"} as ArrayList<Dish>
+                        FILTERED_FOOD = dishes.filter { it.category ==  "Main Course"} as ArrayList<Dish>
                     }
                     3 -> {
-                        foodFiltered = dishes.filter { it.category ==  "Dessert"} as ArrayList<Dish>
+                        FILTERED_FOOD = dishes.filter { it.category ==  "Dessert"} as ArrayList<Dish>
                     }
                     4 -> {
-                        foodFiltered = dishes.filter { it.category ==  "Drinks"} as ArrayList<Dish>
+                        FILTERED_FOOD = dishes.filter { it.category ==  "Drinks"} as ArrayList<Dish>
                     }
                     else -> {
-                        foodFiltered = dishes;
+                        FILTERED_FOOD = dishes;
                     }
                 }
-                populateRecyclerViewMenuDishes(foodFiltered)
+                populateRecyclerViewMenuDishes(FILTERED_FOOD)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
