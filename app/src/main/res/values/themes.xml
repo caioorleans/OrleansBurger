@@ -12,6 +12,10 @@
         <item name="alertDialogStyle">@style/MyAlertDialog</item>
     </style>
 
+    <style name="splashScreenIcon">
+        <item name="srcCompat">@drawable/orleans_burguer</item>
+    </style>
+
     <style name="title">
         <item name="fontFamily">@font/aclonica</item>
     </style>

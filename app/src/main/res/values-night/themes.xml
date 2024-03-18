@@ -13,6 +13,10 @@
         <item name="cardViewStyle">@style/myCardView</item>
     </style>
 
+    <style name="splashScreenIcon">
+        <item name="srcCompat">@drawable/orleans_burguer_dark</item>
+    </style>
+
     <style name="title">
         <item name="fontFamily">@font/aclonica</item>
         <item name="android:textColor">@color/ice_white</item>
