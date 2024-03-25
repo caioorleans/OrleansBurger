@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.orleanscaio.myrestaurant.cart.CartItem
 import com.orleanscaio.myrestaurant.cart.CartPreferences
 import com.orleanscaio.myrestaurant.databinding.ActivityDishDetailsBinding
@@ -25,7 +27,11 @@ class DishDetailsActivity : AppCompatActivity() {
 
         //TODO: Buscar função para substituir essa que está depreciada
         //Recebe o prato enviado pela página anterior
-        dish = intent.getSerializableExtra("dish") as Dish
+        val GSON = Gson()
+        val JSON_DISH = intent.getStringExtra("dish")
+        val TYPE = object : TypeToken<Dish>() {}.type
+
+        dish = GSON.fromJson(JSON_DISH, TYPE)
 
         //Carrega o carrinho a partir dos shared preferences
         cart = CartPreferences.loadCart(this)

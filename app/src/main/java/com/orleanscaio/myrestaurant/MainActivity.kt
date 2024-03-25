@@ -12,6 +12,7 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.orleanscaio.myrestaurant.databinding.ActivityMainBinding
 import com.orleanscaio.myrestaurant.dish.Dish
 import com.orleanscaio.myrestaurant.dish.DishesXmlParser
@@ -60,7 +61,9 @@ class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
     //Redireciona para a página do prato
     override fun onItemClick(dish: Dish) {
         val INTENT = Intent(this,DishDetailsActivity::class.java)
-        INTENT.putExtra("dish", dish)
+        val GSON = Gson()
+        val JSON = GSON.toJson(dish)
+        INTENT.putExtra("dish", JSON)
         startActivity(INTENT)
     }
 

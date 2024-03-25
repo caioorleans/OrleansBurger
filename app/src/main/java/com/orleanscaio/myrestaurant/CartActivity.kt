@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.orleanscaio.myrestaurant.cart.CartItem
 import com.orleanscaio.myrestaurant.cart.CartPreferences
 import com.orleanscaio.myrestaurant.databinding.ActivityCartBinding
@@ -53,7 +54,9 @@ class CartActivity : AppCompatActivity(), ItemCartAdapterInterface {
     //Método de ItemCartAdapterInterface para editar o prato selecionado
     override fun onClickEdit(dish: Dish) {
         val INTENT = Intent(this,DishDetailsActivity::class.java)
-        INTENT.putExtra("dish", dish)
+        val GSON = Gson()
+        val JSON = GSON.toJson(dish)
+        INTENT.putExtra("dish", JSON)
         startActivity(INTENT)
     }
 
