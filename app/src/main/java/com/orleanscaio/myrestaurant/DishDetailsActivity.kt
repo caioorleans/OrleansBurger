@@ -25,7 +25,6 @@ class DishDetailsActivity : AppCompatActivity() {
         binding = ActivityDishDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //TODO: Buscar função para substituir essa que está depreciada
         //Recebe o prato enviado pela página anterior
         val GSON = Gson()
         val JSON_DISH = intent.getStringExtra("dish")

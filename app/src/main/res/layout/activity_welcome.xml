@@ -9,7 +9,6 @@
     android:padding="64dp"
     >
 
-
     <TextView
         android:id="@+id/textView2"
         android:textSize="0sp"

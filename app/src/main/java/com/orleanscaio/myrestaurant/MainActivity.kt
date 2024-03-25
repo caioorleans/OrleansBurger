@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), DishMenuAdapterInterface {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Cria o spinner para posteriormente ser populado
+        //Cria o spinner para posteriormente
         val SPINNER = createSpinner(this);
 
         //carrega todos os pratos a partir de um arquivo xml

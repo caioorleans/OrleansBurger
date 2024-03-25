@@ -30,7 +30,7 @@ class AdapterDishMenu(context:Context,
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        //This is where the layout is inflated (givin a look to our rows)
+        //Aqui o layout é inflado
         val INFLATER: LayoutInflater = LayoutInflater.from(context)
         val VIEW:View = INFLATER.inflate(R.layout.card_dish_menu, parent, false)
 
@@ -38,7 +38,7 @@ class AdapterDishMenu(context:Context,
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        //assign values to the views created
+        //Associa as views criadas ao valor de cada uma
         holder.nameTextView.text = dishes[position].name
         holder.priceTextView.text = buildString {
             append("R$ ")
@@ -71,7 +71,7 @@ class AdapterDishMenu(context:Context,
     }
 
     override fun getItemCount(): Int {
-        //Counts how many items we have
+        //Conta quantos itens nós temos
         return dishes.size
     }
 
