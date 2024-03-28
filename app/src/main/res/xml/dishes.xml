@@ -40,6 +40,39 @@
     <dish>
         <id>5</id>
         <category>Main Course</category>
+        <name>Super Burguer</name>
+        <ingredients>
+            500 gramas de carne de primeira, cebola roxa, bacon, queijo cheddar, alface, tomate e picles no pão de hamburguer.
+        </ingredients>
+        <time_to_prepare>20</time_to_prepare>
+        <cost>25.99</cost>
+        <image_uri>Hamburguer1.webp</image_uri>
+    </dish>
+    <dish>
+        <id>6</id>
+        <category>Main Course</category>
+        <name>Cream Burguer</name>
+        <ingredients>
+            500 gramas de carne de primeira, queijo cheddar, cream cheese e cheiro verde no pão de hamburguer.
+        </ingredients>
+        <time_to_prepare>20</time_to_prepare>
+        <cost>22.99</cost>
+        <image_uri>All_in_burguer.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>7</id>
+        <category>Main Course</category>
+        <name>Chicken Burguer</name>
+        <ingredients>
+            500 gramas de frango empanado, cream cheese, alface e tomate no pão de hamburguer.
+        </ingredients>
+        <time_to_prepare>20</time_to_prepare>
+        <cost>24.99</cost>
+        <image_uri>h-frango.png</image_uri>
+    </dish>
+    <dish>
+        <id>8</id>
+        <category>Main Course</category>
         <name>Pizza de Calabresa</name>
         <ingredients>Pizza recheada com molho de tomate, queijo mussarela, calabresa, cebola e azeitona.</ingredients>
         <time_to_prepare>28</time_to_prepare>
@@ -47,7 +80,7 @@
         <image_uri>pizzacalabresa.jpg</image_uri>
     </dish>
     <dish>
-        <id>6</id>
+        <id>9</id>
         <category>Main Course</category>
         <name>Pizza Portuguesa</name>
         <ingredients>Pizza recheada com molho de tomate, queijo mussarela, bacon, ovo, cebola, milho e azeitona.</ingredients>
@@ -56,21 +89,84 @@
         <image_uri>pizzaportuguesa.jpeg</image_uri>
     </dish>
     <dish>
-        <id>7</id>
-        <category>Main Course</category>
-        <name>Pizza Quatro Queijos</name>
-        <ingredients>Pizza recheada com molho de tomate, provolone, mussarela, parmesão e gorgonzola.</ingredients>
-        <time_to_prepare>28</time_to_prepare>
-        <cost>34.50</cost>
-        <image_uri>pizza4queijos.png</image_uri>
-    </dish>
-    <dish>
-        <id>8</id>
+        <id>10</id>
         <category>Main Course</category>
         <name>Pizza Frango Catupity</name>
         <ingredients>Pizza recheada com molho de tomate, mussarela, frango desfiado, catupiry, cebola e azeitona.</ingredients>
         <time_to_prepare>32</time_to_prepare>
         <cost>34.50</cost>
         <image_uri>pizza-de-frango-com-catupiry.png</image_uri>
+    </dish>
+    <dish>
+        <id>11</id>
+        <category>Drinks</category>
+        <name>Refrigerante Lata</name>
+        <ingredients>Refrigerante coca, coca zero, fanta guaraná, uva ou laranja. Indicar sabor nas observações.</ingredients>
+        <time_to_prepare>1</time_to_prepare>
+        <cost>7.99</cost>
+        <image_uri>refri_lata.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>12</id>
+        <category>Drinks</category>
+        <name>Copo suco</name>
+        <ingredients>Suco sabor laranja, uva ou maracujá. Indicar sabor nas observações.</ingredients>
+        <time_to_prepare>1</time_to_prepare>
+        <cost>7.99</cost>
+        <image_uri>sucos.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>13</id>
+        <category>Drinks</category>
+        <name>Cerveja Antartica</name>
+        <ingredients>Cerveja antartica.</ingredients>
+        <time_to_prepare>1</time_to_prepare>
+        <cost>7.99</cost>
+        <image_uri>antartica.webp</image_uri>
+    </dish>
+    <dish>
+        <id>14</id>
+        <category>Drinks</category>
+        <name>Garrafa Água Indaiá</name>
+        <ingredients>Água mineral.</ingredients>
+        <time_to_prepare>1</time_to_prepare>
+        <cost>3.00</cost>
+        <image_uri>agua.jpeg</image_uri>
+    </dish>
+    <dish>
+        <id>15</id>
+        <category>Dessert</category>
+        <name>Bolo de Chocolate com Ninho</name>
+        <ingredients>Fatia de bolo com massa de chocolate e recheio de creme de ninho.</ingredients>
+        <time_to_prepare>2</time_to_prepare>
+        <cost>12</cost>
+        <image_uri>bolo.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>16</id>
+        <category>Dessert</category>
+        <name>Milk Shake de Óreo</name>
+        <ingredients>Leite, sorvete de flocos e pedaços de óreo mexidos com um mixer.</ingredients>
+        <time_to_prepare>5</time_to_prepare>
+        <cost>15</cost>
+        <image_uri>milk-shake.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>17</id>
+        <category>Dessert</category>
+        <name>Brownie com sorvete</name>
+        <ingredients>Brownie de chocolate com uma bola de sorvete de creme e cobertura de chocolate.</ingredients>
+        <time_to_prepare>8</time_to_prepare>
+        <cost>15</cost>
+        <image_uri>brownie-sorvete.jpg</image_uri>
+    </dish>
+    <dish>
+        <id>18</id>
+        <category>Dessert</category>
+        <name>Mini pudim</name>
+        <ingredients>Mini pudim feito com creme de leite integral.</ingredients>
+        <time_to_prepare>4</time_to_prepare>
+        <cost>10</cost>
+        <image_uri>pudim.webp</image_uri>
     </dish>
 </dishes>

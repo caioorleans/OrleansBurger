@@ -26,10 +26,7 @@ class AdapterDishMenu(context:Context,
         this.dishes = dishes
         this.recyclerViewInterface = recyclerInterface
     }
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         //Aqui o layout é inflado
         val INFLATER: LayoutInflater = LayoutInflater.from(context)
         val VIEW:View = INFLATER.inflate(R.layout.card_dish_menu, parent, false)

@@ -43,7 +43,8 @@
                 android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/placeholder"/>
 
             <TextView
                 android:id="@+id/text_dish_details_dish_ingredients"
@@ -56,7 +57,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_dish_details_dish_name" />
+                app:layout_constraintTop_toBottomOf="@+id/text_dish_details_dish_name"
+                android:text="@string/placeholder"/>
 
             <TextView
                 android:id="@+id/text_dish_details_time_to_prepare_label"
